@@ -22,23 +22,36 @@
 
 // my solution
 let num1 = 1  
-  let num2 = 0  
-  let count = 0
-  let arr1 = [] 
-function fibonacci(limit) {
-  for(let i=0; i<limit/2; i++){
+let num2 = 0  
+let count = 0
+let arr1 = []
+document.querySelector('#btn').addEventListener('click',fibonacci)
+
+ 
+function fibonacci() {
+  
+  let x=parseInt(document.querySelector('#input').value)
+   arr1.length=0
+   num1=1
+   num2=count=0
+
+  for(let i=0; i<x/2; i++){
   arr1.push(count)
+  console.log(count)
   num1 = num1 + num2
   count = num1  
-  console.log(count)
+ 
   arr1.push(count)
+  console.log(count) 
   num2 = num1 + num2
   count = num2  
-  console.log(count)  
+   
     }
+    document.querySelector('#result').innerText = arr1
 return arr1
 }
-fibonacci(10)
+
+ 
 
 
 
