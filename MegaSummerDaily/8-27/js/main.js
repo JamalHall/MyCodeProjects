@@ -51,8 +51,21 @@ function fibonacci() {
 return arr1
 }
 
- 
+//Refactoring solution
+function fib(n){
+  let num1 = 0
+  let num2 = 1
+  let memory
+  let fibonacciArray = []
 
+  for (let i = 0; i < n; i++){
+      memory = num2 // store the second number into memory
+      num2 += num1
+      num1 = memory // make the first number in the next loop the stored value 
+      fibonacciArray.push(num1)
+  }
+  return num1  // the last number stored in the array
+}
 
 
 // // L#100devs Solution
