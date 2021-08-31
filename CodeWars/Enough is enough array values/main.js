@@ -29,6 +29,24 @@ for (let i = 0; i < arr.length; i++) {
 
 
 
+  
+  // function deleteNth(arr,n){
+  //   let countArray = [arr,n]
+    
+  //  let count = 0
+  //  do {
+  //    //countArray.forEach((e,i) => console.log(e,i))
+  //    countArray.forEach((e,i) => return {if(e===deleteNth[count]) {deneteNth.unshift(e)}})
+  //    n--
+  //    count++
+  //  } while (n!==0)
+     
+  //    let oldL = countArray.length
+  //    let newL = deleteNth.length
+  //    deleteNth.splice((newL-oldL))
+  //   }
+
+
 
 //  let countArray = arr
 //   let memoryMap = arr
