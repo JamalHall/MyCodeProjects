@@ -1,18 +1,20 @@
 
 function solution(str, ending){
     
-  str1 = str.slice(-(ending.length))
+  let str1 = str.slice(-(ending.length))
   console.log(str1)
   console.log(ending)
-  if (str1===ending){
-    return console.log(true)
+  if (str1===ending || ending === ""){
+    console.log(true)
+    return true
+    
   } else{ 
-    return console.log(false)
+    console.log(false)
+    return false
   }
    
 }
-
-//solution('abcde', 'cde')
-solution('abcde', 'abc')
+//solution('abcde', 'cde') // true
+solution('abcde', 'abc')  // false
 
 
