@@ -16,4 +16,4 @@ function wordIn(word){
 return capWord
 }
 
-console.log(wordIn('superman'),'Superman')
+console.log(wordIn('superman'),' => Superman')
