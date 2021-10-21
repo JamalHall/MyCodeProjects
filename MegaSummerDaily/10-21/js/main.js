@@ -16,24 +16,24 @@ Hint: map through array checking if indexof == lastindexof and return the approp
 
 function stringConvert(string,valid){
   str=string.toLowerCase().split('')
-  console.log(str)
-  let count = 0
-let strMap = str.map((e,i) => {
-    console.log(e)
-    str.forEach(element => {if(e===element){count++}
-    console.log(element)
-    });
-  return (count===1)?"(":")"
-  })
-  let strSym=strMap.join()
+  let strSym = []
+  for(e of str){
+    find(str,e)
+    function find(str, e){
+      let count =0
+      console.log( str.filter(element => { return element.indexOf(e) != -1}) )
+      count = str.filter(element => { return element.indexOf(e) != -1}).length
+      x = (count>1)?')':'('
+      strSym.push(x)  
+    }
+  }
+  strSym = strSym.join('')
   console.log(strSym)
-  console.log(str.join())
-
-  return console.log((strSym===valid)?true:false)
-
+  console.log((strSym===valid)?true:false)
+  return strSym
 }
 
 console.log( stringConvert("din" , "(((") )
-//console.log( stringConvert("recede" , "()()()") )
-//console.log( stringConvert("Success" , ")())())") )
-//console.log( stringConvert("(( @" , "))((") )
+console.log( stringConvert("recede" , "()()()") )
+console.log( stringConvert("Success" , ")())())") )
+console.log( stringConvert("(( @" , "))((") )
