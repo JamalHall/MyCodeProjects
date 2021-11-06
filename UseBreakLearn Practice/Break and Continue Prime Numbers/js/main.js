@@ -20,20 +20,20 @@ function showPrimes(n) {
   }
 
 
-////with the primes included in the main function
+//with the primes included in the main function
 
-// function showPrimes(n) {
-//     nextPrime:
-//     for (let i = 2; i < n; i++) {
+function showPrimes(n) {
+    nextPrime:
+    for (let i = 2; i < n; i++) {
   
-//       // check if i is a prime number
-//       for (let j = 2; j < i; j++) {
-//         if (i % j == 0) continue nextPrime;
-//       }
+      // check if i is a prime number
+      for (let j = 2; j < i; j++) {
+        if (i % j == 0) continue nextPrime;
+      }
   
-//       console.log(i);
-//     }
-//   }
+      console.log(i);
+    }
+  }
 
 
 
