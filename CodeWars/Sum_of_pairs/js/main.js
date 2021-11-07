@@ -35,9 +35,9 @@ function sumPairs(ints, s){
   }
 
 
-//console.log(sumPairs([1, 4, 8, 7, 3, 15], 8), "Expected return [1, 7] ")
-//console.log(sumPairs([20, -13, 40], -7), " Expected return undefined") 
-//console.log(sumPairs([1, -2, 3, 0, -6, 1], -6), "Expected return [0, -6]")
+console.log(sumPairs([1, 4, 8, 7, 3, 15], 8), "Expected return [1, 7] ")
+console.log(sumPairs([20, -13, 40], -7), " Expected return undefined") 
+console.log(sumPairs([1, -2, 3, 0, -6, 1], -6), "Expected return [0, -6]")
 console.log(sumPairs([10, 5, 2, 3, 7, 5], 10), "Expected return [3, 7]")
 console.log(sumPairs([1, 2, 3, 4, 1, 0], 2), "Expected return [1, 1]")  
    
