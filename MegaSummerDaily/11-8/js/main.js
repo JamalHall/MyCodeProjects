@@ -36,3 +36,30 @@ console.log(removeConsecutiveDuplicates(["abracadabra","allottee","assessee"]),'
 // function dup(array) {
 //     return array.map(word => word.split('').filter( (letter, index) => letter !== word[index + 1]).join(''))
 //     };
+
+// //another code wars solution
+// function dup(s) {
+//   //..
+//   // look into the array
+//     // access individual string
+//     //split string into array
+//     //set array to splitLetterArray
+//     //loop though splitLetterArray
+//       //if a letter is equal to the next , remove it from splitLetterArray
+//     let different = []
+//     let result = []
+  
+//   for(let i = 0; i<s.length;i++){
+//     for(let j= 0; j<s[i].length;j++){
+//       if(s[i][j]!==s[i][j+1]){
+//         different.push(s[i][j])
+//         }
+//       if(j === s[i].length-1){
+        
+//         result.push(different.join(""))
+//         different = []
+//         }
+//       }
+//     }
+       
+//   return (result) };
