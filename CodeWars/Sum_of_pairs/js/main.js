@@ -26,54 +26,53 @@ Negative numbers and duplicate numbers can and will appear.
 */
 
 function sumPairs(ints, s){ 
-     const intsSet = new Set();
-    for (let i = 0; i < ints.length; i++) {
-      let currInt = ints[i];
-      if (intsSet.has(s - currInt)) return [s - currInt, currInt];
-      else intsSet.add(currInt);
+  let intSet = new Set();
+  for (let i = 0; i < ints.length; i++) {
+  let curr = ints[i];
+  console.log(intSet)
+  if (intSet.has(s - curr)){
+  return [s - curr, curr]
+      } else {
+     console.log(curr)   
+     intSet.add(curr)     
+      }
     }
   }
 
 
 console.log(sumPairs([1, 4, 8, 7, 3, 15], 8), "Expected return [1, 7] ")
-console.log(sumPairs([20, -13, 40], -7), " Expected return undefined") 
-console.log(sumPairs([1, -2, 3, 0, -6, 1], -6), "Expected return [0, -6]")
-console.log(sumPairs([10, 5, 2, 3, 7, 5], 10), "Expected return [3, 7]")
-console.log(sumPairs([1, 2, 3, 4, 1, 0], 2), "Expected return [1, 1]")  
-   
-//&& element!== ints[count1]
+//console.log(sumPairs([20, -13, 40], -7), " Expected return undefined") 
+//console.log(sumPairs([1, -2, 3, 0, -6, 1], -6), "Expected return [0, -6]")
+//console.log(sumPairs([10, 5, 2, 3, 7, 5], 10), "Expected return [3, 7]")
+//console.log(sumPairs([1, 2, 3, 4, 1, 0], 2), "Expected return [1, 1]")  
+ 
 
+/*code wars solution i like
 
-//let arr = []
-// ints.forEach(element => {
-//   let count1 = 1 + ints.indexOf(element)
-//   while(count1<ints.length){ 
-  
-//     if( element + ints[count1] === s ){
-//       arr.push(element)
-//       arr.push(ints[count1])    
-//     }
-//     count1++
-    
-//   }
-//   });
-//   console.log(arr)
-//   return (arr.length<2)?undefined:arr.slice(0,2)
+function sum_pairs (ints, s) {
+  // This object will keep track of the numbers seen and their first indexes
+  // For an array like [42, 5, 5, 7] we will get { '42': 0, '5': 1, '7': 3 }
+  const numbersSeen = {};
 
+  for (let i = 0; i < ints.length; i += 1) {
+    // For every number...
+    const currentNumber = ints[i];
+    // Find the pair it needs to add up to "s"
+    const pair = s - currentNumber;
 
+    // If we've seen the pair before, we have our best set of numbers!
+    if (numbersSeen[pair] !== undefined) {
+      return [ pair, currentNumber ];
+    }
 
-// let arr = []
+    // Otherwise save this number's index if we haven't seen it before
+    if (numbersSeen[currentNumber] === undefined) {
+      numbersSeen[currentNumber] = i;
+    }
+  }
 
-// for(let i=0; i<ints.length; i++){
-//   ints.forEach(e => {
-//    if(ints[i] + e === s){
-//       arr.push(ints[i])
-//       ints.pop()         
-//     }
-//   })
-    
-//   }
-   
-//   console.log(arr)
-//   return (arr.length<2)?undefined:arr.slice(0,2)
-//   }
+  // Return "null" if we find nothing after our loop
+  return null;
+}
+
+*/
