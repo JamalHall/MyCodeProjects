@@ -23,17 +23,29 @@ addTwo(3)(5); // 10
 We can assume any number being passed in will be valid whole number.
 
 */
-// a solution i found working to under stand 
-var add = function(n) {
-  console.log(n)
-  const func = x => add(n + x)
+// a solution I found, I'm working to understand 
+// var add = function(n) {
+//   console.log(n)
+//   const func = x => add(n + x)
    
-  func.valueOf = () => n
-  console.log(func)
-  return func;
-}
+//   func.valueOf = () => n
+//   console.log(func)
+//   return func;
+// }
 
-console.log(add(1) == 1)
-console.log(add(1)(2) == 3)
-console.log(add(1)(2)(3) == 6)
+
+function add(x) {
+  //console.log(x)
+  return function (y) {
+    console.log(y)
+    if (y === undefined) {
+      return x;
+    }
+        return add(x + y);
+  }
+}
+console.log(add(1)(2)(3)(4)()) // 10
+// console.log(add(1),' == 1')
+// console.log(add(1)(2), '== 3')
+// console.log(add(1)(2)(3), '== 6')
  
