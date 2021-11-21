@@ -62,7 +62,7 @@ function jewelsAndStones2(jewels,stones) {
     
     
     //brute force solution
-    function jewelsAndStones3(jewels,stones) { 
+    function findJewels(jewels,stones) { 
     let count =0
     for(j of jewels){
         for(s of stones){
@@ -74,6 +74,27 @@ function jewelsAndStones2(jewels,stones) {
         return count
     }
 
-    console.log(jewelsAndStones3('aA','aAAbbbb' ), '=> 3')
-    console.log(jewelsAndStones3('z','ZZ' ), '=> 0')
-    console.log(jewelsAndStones3('abc','abbccdd' ), '=> 5')
+    console.log(findJewels('aA','aAAbbbb' ), '=> 3')
+    console.log(findJewels('z','ZZ' ), '=> 0')
+    console.log(findJewels('abc','abbccdd' ), '=> 5')
+
+
+    // Leon's Solution from class
+    function findJewels2(jewels,stones){
+        let count=0
+            map = {}
+        for(const jewel of jewels){
+            map[jewel] = true
+        }
+        for(const stone of stones){
+            if(map[stone]){
+                count++
+            }
+        }
+        console.log(map)
+        return count
+    }
+
+    console.log(findJewels2('aA','aAAbbbb' ), '=> 3')
+    console.log(findJewels2('z','ZZ' ), '=> 0')
+    console.log(findJewels2('abc','abbccdd' ), '=> 5')
