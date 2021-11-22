@@ -31,5 +31,10 @@ function isPrime(num) {
       return num > 1
     }
 
-
+    console.log(isPrime(23)) 
+    console.log(isPrime(-3)) 
+    console.log(isPrime(15))
+    console.log(isPrime(1))
+    console.log(isPrime(2))
+    console.log(isPrime(4))
     
