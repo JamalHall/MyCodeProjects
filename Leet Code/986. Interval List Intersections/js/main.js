@@ -39,11 +39,14 @@ var intervalIntersection = function(firstList, secondList) {
 let out=[]
 let range1=[]
 let range2=[]
-for(e of firstList){
-  
+for(e1 of firstList){
+for(e2 of secondList){
+  console.log(e1[0],e2[0])
+ 
+}  
 } 
 
-console.log(range1)    
+console.log(out)    
 
 
 }
