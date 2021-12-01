@@ -30,6 +30,7 @@ From: https://leetcode.com/problems/contains-duplicate/
     for(e of nums){
         numbersMap[e] = numbersMap[e]  +1 || 1       
             if(numbersMap[e]===2){
+                console.log('key=>',e) /// the key that triggered the return
                 return true       
             }     
     }    
