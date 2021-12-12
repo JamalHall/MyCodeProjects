@@ -9,15 +9,22 @@ Examples
 132189  -->  1 + 3 + 2 + 1 + 8 + 9 = 24  -->  2 + 4 = 6
 493193  -->  4 + 9 + 3 + 1 + 9 + 3 = 29  -->  2 + 9 = 11  -->  1 + 1 = 2
 */
-
-  function digital_root(n) {
+//refactored
+function digital_root(n) {
     const root = n.toString().split('').reduce((acc,cv)=> +acc + +cv)        
-    const numSize = root.toString().split('').length
-        console.log('root ',root)
-        console.log('size ',numSize)
-    if(numSize === 1){ return root }      
+        if(root < 10){ return root }      
         return digital_root(root)  // calling the function recursively without a return means you don't hang on to the value you want
         }
+
+
+//   function digital_root(n) {
+//     const root = n.toString().split('').reduce((acc,cv)=> +acc + +cv)        
+//     const numSize = root.toString().split('').length
+//         console.log('root ',root)
+//         console.log('size ',numSize)
+//     if(numSize === 1){ return root }      
+//         return digital_root(root)  // calling the function recursively without a return means you don't hang on to the value you want
+//         }
 
   console.log(digital_root(16),'= 7')
   console.log(digital_root(942),'= 6')
