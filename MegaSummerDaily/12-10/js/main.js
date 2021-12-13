@@ -65,3 +65,18 @@ console.log(fibo(4), '=> 3')
 console.log(fibo(3), '=> 2')
 console.log(fibo(2), '=> 1')
 console.log(fibo(0), '=> 0')
+
+// Leon's Method without methods
+function fib(n){
+  let arr = [0,1]
+  for(let i = 2; i <= n; i++){
+    arr[i] = arr[i - 2] + arr[i - 1]
+  }
+  return arr[n]
+}
+console.log(fib(6), '=> 8')
+console.log(fib(5), '=> 5')
+console.log(fib(4), '=> 3')
+console.log(fib(3), '=> 2')
+console.log(fib(2), '=> 1')
+console.log(fib(0), '=> 0')
