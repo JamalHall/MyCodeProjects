@@ -35,7 +35,8 @@ https://www.youtube.com/watch?v=hISXxjX6Ino
 */
 // recursive solution with memoization
 let arr = [0,1]
-function fib(n){      
+function fib(n){
+  if(n<2){return n}else{  // default case       
   let prev2 = arr[arr.length-2]
   let prev1 = arr[arr.length-1]
   let next = prev1 + prev2
@@ -47,10 +48,11 @@ function fib(n){
     return arr[n]
   }
 }
+}
 
 console.log(fib(6), '=> 8')
-// console.log(fib(5), '=> 5')
-// console.log(fib(4), '=> 3')
-// console.log(fib(3), '=> 2')
-// console.log(fib(2), '=> 1')
-// console.log(fib(0), '=> 0')
+console.log(fib(5), '=> 5')
+console.log(fib(4), '=> 3')
+console.log(fib(3), '=> 2')
+console.log(fib(2), '=> 1')
+console.log(fib(0), '=> 0')
