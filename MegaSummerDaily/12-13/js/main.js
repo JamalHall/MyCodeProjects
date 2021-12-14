@@ -23,26 +23,28 @@ Input: n = 4
 Output: 3
 Explanation: F(4) = F(3) + F(2) = 2 + 1 = 3.
 
-
-
 Hint:  https://www.youtube.com/watch?v=zg-ddPbzcKM
 
 From: https://leetcode.com/problems/fibonacci-number/
 
+More videos for homework:
+https://youtu.be/vYquumk4nWw
+https://www.youtube.com/watch?v=hISXxjX6Ino
+
 
 */
-// trying to write a recursive solution
-
-function fib(n){
-  let arr = [0,1]   
+// recursive solution with memoization
+let arr = [0,1]
+function fib(n){      
   let prev2 = arr[arr.length-2]
   let prev1 = arr[arr.length-1]
-  let next = (prev1 + prev2)
+  let next = prev1 + prev2
+  arr.push(next)
   console.log(arr)   
-  if(arr.length<n){ 
-    return fib(arr)
+  if(!arr[n]){ 
+    return fib(n)
   } else{
-    fib(n-1)
+    return arr[n]
   }
 }
 
