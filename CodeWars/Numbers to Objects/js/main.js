@@ -25,7 +25,7 @@ All inputs will be arrays of numbers. All character codes are valid lower case l
 // }
 
 
-// this function makes seperate objects by moving the object literal inside of the loop
+// this function makes separate objects by moving the object literal inside of the loop
 function numObj(s){
    let arr = [];
    for(let num of s){
