@@ -37,7 +37,7 @@ https://www.youtube.com/watch?v=hISXxjX6Ino
 
 function fib(n,arr){
   arr = (!arr)?[0,1]:arr
-  if(n<2){return n}else{  // default case       
+  if(n<2){return n}else{  // forgot to add a default case. Added to get f(0) to work
   let prev2 = arr[arr.length-2]
   let prev1 = arr[arr.length-1]
   let next = prev1 + prev2
