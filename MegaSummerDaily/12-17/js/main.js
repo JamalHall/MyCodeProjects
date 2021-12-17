@@ -31,11 +31,12 @@ return fact(n,f)
 }
 }
 
-console.log(fact(5),'=>120')
+console.log(fact(9),'=>120')
 
 //codewars solution
 const factorial = n => {
   if (n <= 1) return 1;
   
   return n * factorial(n - 1);
-};
+}
+console.log(factorial(5),'=>120')
