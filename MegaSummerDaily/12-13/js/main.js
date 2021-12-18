@@ -33,7 +33,20 @@ https://www.youtube.com/watch?v=hISXxjX6Ino
 
 
 */
-// recursive solution with memoization
+//iterative solution from class
+function fib(n){
+  let arr = [0,1]
+  for(let i = 2; i <= n; i++){
+    arr[i] = arr[i - 1] + arr[i - 2]
+  }
+  return arr[n]
+}
+console.log(fib(2), 1)
+console.log(fib(4), 3)
+
+
+
+// My recursive solution with memoization
 
 function fib(n,arr){
   arr = (!arr)?[0,1]:arr
@@ -57,3 +70,20 @@ console.log(fib(4), '=> 3')
 console.log(fib(3), '=> 2')
 console.log(fib(2), '=> 1')
 console.log(fib(0), '=> 0')
+
+// leon's recursion with memoization
+const memo = {}
+function fib(n) {
+    if(n <= 1){
+        return n
+    }else if( memo[n] ){
+        return memo[n]
+    }else{
+        let result = fib(n - 1) + fib(n - 2)
+        memo[n] = result
+        return result
+    }
+};
+console.log(fib(6))
+
+// recursion without Memoization
