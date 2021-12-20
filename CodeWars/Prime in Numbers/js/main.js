@@ -11,11 +11,12 @@ function primeFactors(n){
     let str = ''
     for (let factor = 2; factor <= n; ) {
       if (n % factor == 0) {
-        primes[factor] = (primes[factor]) ? primes[factor] + 1 : 1
+        primes[factor] = primes[factor] + 1 || 1
         console.log(primes)
         n = n/factor
         if (n % factor) {
-          str = str + `(${factor}${(primes[factor] > 1) ? `**${primes[factor]}` : ''})`
+        console.log(n,factor,n%factor)
+        str = str + `(${factor}${(primes[factor] > 1) ? `**${primes[factor]}` : ''})`
         }
       } else {
         factor++
