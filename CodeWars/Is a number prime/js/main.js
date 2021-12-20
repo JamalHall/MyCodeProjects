@@ -12,29 +12,45 @@ is_prime(1)  'false
 is_prime(2)   true 
 is_prime(-1)  false 
 */
-//version 2 faster 
-function isPrime(num) {
-  for(var i = 2; i <= Math.sqrt(num); i++)
-      if(num % i === 0){ 
-        return false
-        }
-    return num > 1
+// my fav version because I can see primes and composites if I want to
+isPrime = (num)=>{
+  if(num<2) return false
+  let prime=[]
+  for(let factor=2; num>=factor; )
+  if(num%factor==0){
+    prime.push(num)
+    num = num/factor       
+  } else {
+    factor++
   }
+  return prime.length==1?true:false
+}
 
 
-  //version 1 correct but timesout
-  function isPrime(num) {
-    for(var i = 2; i <num; i++)
-        if(num % i === 0){ 
-          return false
-          }
-      return num > 1
-    }
+// //version 2 faster 
+// function isPrime(num) {
+//   for(var i = 2; i <= Math.sqrt(num); i++)
+//       if(num % i === 0){ 
+//         return false
+//         }
+//     return num > 1
+//   }
 
-    console.log(isPrime(23)) 
-    console.log(isPrime(-3)) 
-    console.log(isPrime(15))
-    console.log(isPrime(1))
-    console.log(isPrime(2))
-    console.log(isPrime(4))
+
+//   //version 1 correct but timesout
+//   function isPrime(num) {
+//     for(var i = 2; i <num; i++)
+//         if(num % i === 0){ 
+//           return false
+//           }
+//       return num > 1
+//     }
+
+console.log(isPrime(23),true) 
+console.log(isPrime(-3),false) 
+console.log(isPrime(15),false)
+console.log(isPrime(1),false)
+console.log(isPrime(2),true)
+console.log(isPrime(4),false)
+console.log(isPrime(75),false)
     
