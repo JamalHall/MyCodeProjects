@@ -33,7 +33,7 @@ https://www.youtube.com/watch?v=hISXxjX6Ino
 
 
 */
-//iterative solution from class
+//iterative solution from class 113 //console.log(fib(9),34) 31
 function fib(n){
   let arr = [0,1]
   for(let i = 2; i <= n; i++){
@@ -41,12 +41,16 @@ function fib(n){
   }
   return arr[n]
 }
-console.log(fib(2), 1)
-console.log(fib(4), 3)
+
+//recursion without memoization 212  //console.log(fib(9),34) 383
+function fib(n){
+    if(n<2){return n}
+   return fib(n-1)+fib(n-2)
+  }
 
 
 
-// My recursive solution with memoization
+// My recursive solution with memoization 210  //console.log(fib(9),34) 82
 
 function fib(n,arr){
   arr = (!arr)?[0,1]:arr
@@ -64,14 +68,26 @@ function fib(n,arr){
 }
 }
 
-console.log(fib(6), '=> 8')
-console.log(fib(5), '=> 5')
-console.log(fib(4), '=> 3')
-console.log(fib(3), '=> 2')
-console.log(fib(2), '=> 1')
-console.log(fib(0), '=> 0')
 
-// leon's recursion with memoization
+// another recursive solution with memoization 101 //console.log(fib(9),34) 75
+let arr = [0,1]
+function fib(n){
+  if(n<2){return n}else{  // default case       
+  let prev2 = arr[arr.length-2]
+  let prev1 = arr[arr.length-1]
+  let next = prev1 + prev2
+  arr.push(next)
+  console.log(arr)   
+  if(!arr[n]){ 
+    return fib(n)
+  } else{
+    return arr[n]
+  }
+}
+}
+
+
+// leon's recursion with memoization 100 //console.log(fib(9),34) 92
 const memo = {}
 function fib(n) {
     if(n <= 1){
@@ -83,7 +99,13 @@ function fib(n) {
         memo[n] = result
         return result
     }
-};
-console.log(fib(6))
+}
 
-// recursion without Memoization
+
+
+console.log(fib(6), '=> 8')
+console.log(fib(5), '=> 5')
+console.log(fib(4), '=> 3')
+console.log(fib(3), '=> 2')
+console.log(fib(2), '=> 1')
+console.log(fib(0), '=> 0')
