@@ -23,9 +23,11 @@ From: https://www.codewars.com/kata/545a4c5a61aa4c6916000755
 function gimme(arr){
 arr2=arr.map(e => e)
 return arr.indexOf(arr2.sort((a,b)=>a-b)[1])
-
+}
 //Leon solution using spread operator
-//return arr.indexOf([...arr].sort((a,b)=>a-b)[1])
+function gimme(arr){
+    arr2=arr.map(e => e)
+return arr.indexOf([...arr].sort((a,b)=>a-b)[1])
 
 }
 console.log(gimme([2, 3, 1]), '0 ')
