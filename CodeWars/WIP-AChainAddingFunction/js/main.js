@@ -36,8 +36,7 @@ We can assume any number being passed in will be valid whole number.
 
 function add(x) {
   return function (y) {
-    console.log(x,y)
-         return (typeof(y)!='number')?x:add(x + y);
+     return add(x) + add(y)
   }
 }
 console.log(add(1)(2)(3)(4)(),'=>10')
