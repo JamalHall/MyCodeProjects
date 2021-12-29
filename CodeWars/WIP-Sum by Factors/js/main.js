@@ -27,7 +27,7 @@ Gather all the prime factors you've found in the previous step in a single sorte
 For each prime factor P in the array of the previous step, make a pair which first element is P itself, and which second element is the sum of the elements of the input array that include P in their prime factor decomposition. That's your output.
 */
 
-// factror primes 
+// factor primes 
 //3 arrays merge to one array add all primes to a set turn set to array iterate through values in set to push to array
 
 function sumOfDivided(lst) {
