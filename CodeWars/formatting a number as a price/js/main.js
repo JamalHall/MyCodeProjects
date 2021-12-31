@@ -10,6 +10,7 @@ Numbers should use the standard comma for every 3 numbers and dot to separate th
 function should return a string 'NaN' if the input is not a valid number
 */
 
+// my solution
 var numberToPrice = function(number) {
   if(typeof(number)!='number'){ return 'NaN'}
   number=number.toFixed(3)
@@ -19,16 +20,19 @@ var numberToPrice = function(number) {
   cents=cents.slice(cents.indexOf('.'),cents.indexOf('.')+3).join('')
   dollars = dollars.join('')
   let money = Number(dollars+cents).toFixed(2)
-
   return Number(money).toLocaleString('en-US',{minimumFractionDigits: 2} )
- 
+ }
 
-  }
-console.log(numberToPrice(-200000.10),   '=> -200,000.10')
-console.log(numberToPrice(1500.129),   '=> 1,500.12')
-console.log(numberToPrice(-5),         '=> -5.00')
-console.log(numberToPrice(1000000.5),  '=> 1,000,000.50')
-console.log(numberToPrice('@'),        'NaN')
+
+ // nice solution that is clean
+const numberToPrice = (n) => {
+  if (Number.isNaN(n) || typeof n !== 'number') return 'NaN'
+
+  return n.toFixed(3)
+    .split('.')
+    .reduce((acc, n, i) => i === 0 ? Number(n).toLocaleString() : acc + '.' + n.slice(0, 2), '')
+}
+
 
 //what i tried to do
 function numberToPrice(number) {
@@ -43,3 +47,9 @@ function numberToPrice(number) {
   }
   return sign + chars.join('');
 }
+
+console.log(numberToPrice(-200000.10),   '=> -200,000.10')
+console.log(numberToPrice(1500.129),   '=> 1,500.12')
+console.log(numberToPrice(-5),         '=> -5.00')
+console.log(numberToPrice(1000000.5),  '=> 1,000,000.50')
+console.log(numberToPrice('@'),        'NaN')
