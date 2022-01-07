@@ -13,7 +13,8 @@ app.use(express.json())
 ////DB connection////
 let db,
     dbConnectionStr = process.env.DB_STRING,
-    dbName = 'todoList'
+    dbName = 'todoList' 
+
 
 MongoClient.connect(dbConnectionStr, { useUnifiedTopology: true })
     .then(client => {
@@ -21,16 +22,11 @@ MongoClient.connect(dbConnectionStr, { useUnifiedTopology: true })
         db = client.db(dbName)
     })
         
-        
-//// Listen method ////
-app.listen(PORT, ()=>{
-    console.log(`Server running on port ${PORT}`)
-        })
-
-
+ 
 ////POST////
+    
         app.post('/updateList', (request, response) => {
-            db.collection('listItems').insertOne(request.body)
+            db.collection('listItems').insertOne({taskItem: request.body.taskItem||'empty', date: request.body.date||'empty', status: false})
             .then(result => {
                 console.log('Task Added')
                 response.redirect('/')
@@ -39,11 +35,9 @@ app.listen(PORT, ()=>{
         })
     
 
-
-
 ////GET////
         app.get('/',(request, response)=>{
-            db.collection('listItems').find().sort({date: -1}).toArray()
+            db.collection('listItems').find().toArray()
             .then(data => {
              console.log(data)
                 response.render('index.ejs', { info: data })
@@ -55,12 +49,24 @@ app.listen(PORT, ()=>{
     
 ////PUT////
 
+app.put('/taskStatus', (request, response) => {
+    console.log(request.body)
+    db.collection('listItems').updateOne({taskItem: request.body.TaskID},{$set: {status: request.body.IStatus }})
+
+    .then(result => {
+        console.log('task updated log')
+        response.json('task updated response')
+
+    })
+    .catch(error => console.error(error))
+ 
+})
+
 
 
 ////DELETE////
 app.delete('/deleteTask', (request, response) => {
-    db.collection('listItems').deleteOne({taskItem: request.body.taskD}) 
-    console.log(request.body)
+    db.collection('listItems').deleteOne({taskItem: request.body.TaskDel||null}) 
     .then(result => {
         console.log('Task Deleted')
         response.json('Task Deleted')
@@ -68,3 +74,9 @@ app.delete('/deleteTask', (request, response) => {
     .catch(error => console.error(error))
 
 })
+
+
+//// Listen method ////
+app.listen(PORT, ()=>{
+    console.log(`Server running on port ${PORT}`)
+        })

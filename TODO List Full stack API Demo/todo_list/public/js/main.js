@@ -1,12 +1,23 @@
-const deleteSym = document.querySelectorAll('.fa-trash')
-const completeSym = document.querySelectorAll('.fa-check-square')
+const t1 = document.querySelectorAll('.itm')
+const d1 = document.querySelectorAll('.dte')
+const s1 = document.querySelectorAll('.stat')
+const c1 = document.querySelectorAll('.fa-circle-notch')
+let taskArr = Array.from(t1)
+let dateArr = Array.from(d1)
+let statArr = Array.from(s1)
+let circleArr = Array.from(c1)
 
-Array.from(deleteText).forEach((element)=>{
+console.log('task ',taskArr,' date ',dateArr,' status ',statArr)
+
+const delTask = document.querySelectorAll('.fa-trash')
+const compTask = document.querySelectorAll('.fa-circle-notch')
+
+Array.from(delTask).forEach((element)=>{
     element.addEventListener('click', deleteTask)
 })
 
-Array.from(completeText).forEach((element)=>{
-    element.addEventListener('click', lineOut)
+circleArr.forEach((element)=>{
+    element.addEventListener('click', taskStatus) 
 })
 
 ////post////
@@ -18,20 +29,47 @@ Array.from(completeText).forEach((element)=>{
 
 
 ////put////
+ async function taskStatus (){
+       //console.log(this.parentNode.childNodes)
+       const taskId1 = this.parentNode.childNodes[3].innerText
+       const iStatus1 = (this.parentNode.childNodes[9].innerText=='true')?false:true
 
+       this.nextElementSibling.id=(iStatus1==true)?'on':'off'
 
+       console.log(iStatus1,this.nextElementSibling)       
+        
+        try{
+            const response = await fetch('/taskStatus', {
+            method: 'put',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({  
+                'TaskID': taskId1,
+                'IStatus': iStatus1
+                
+              })            
+          })
+        const data = await response.json()
+        console.log(data)
+        location.reload()
+
+    }catch(err){
+        console.log(err)
+    }
+
+}
+   
 ////delete////
 async function deleteTask(){
-    const taskDel = this.parentNode.childNodes[1].innerText //this represents the span where the delete button is. Then it goes up to the parent of the span the <li>. Then goes to the child node of the <li>. Finally stores its text in taskDel.
-    const dateDel = this.parentNode.childNodes[3].innerText
+    const taskDel1 = this.parentNode.childNodes[3].innerText //this represents the span where the delete button is. Then it goes up to the parent of the span the <li>. Then goes to the child node of the <li>. Finally stores its text in taskDel.
+    console.log(this.parentNode.childNodes)
+      
     try{
         const response = await fetch('deleteTask', {
             method: 'delete',
             headers: {'Content-Type': 'application/json'},
            // this is the body that will be sent to server.js if not hard coded
             body: JSON.stringify({  
-              'taskD': taskDel,
-              'DateD': dateDel
+              'TaskDel': taskDel1
             })
           })
         const data = await response.json()
@@ -43,14 +81,3 @@ async function deleteTask(){
     }
 }
 
-
-
-
-function lineOut(){
-    const taskDel = this.parentNode.childNodes[1].innerText //this represents the span where the delete button is. Then it goes up to the parent of the span the <li>. Then goes to the child node of the <li>. Finally stores its text in taskDel.
-    const dateDel = this.parentNode.childNodes[3].innerText
-    // css update to cross out text and change to light red
-   console.log('task ',taskDel,'date ',dateDel) 
-
-
-}
