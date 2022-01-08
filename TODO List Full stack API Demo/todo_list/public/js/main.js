@@ -1,7 +1,7 @@
 const t1 = document.querySelectorAll('.itm')
 const d1 = document.querySelectorAll('.dte')
 const s1 = document.querySelectorAll('.stat')
-const c1 = document.querySelectorAll('.fa-circle-notch')
+const c1 = document.querySelectorAll('.fa-circle-notch'||'.fa-check-circle')
 let taskArr = Array.from(t1)
 let dateArr = Array.from(d1)
 let statArr = Array.from(s1)
@@ -10,7 +10,7 @@ let circleArr = Array.from(c1)
 console.log('task ',taskArr,' date ',dateArr,' status ',statArr)
 
 const delTask = document.querySelectorAll('.fa-trash')
-const compTask = document.querySelectorAll('.fa-circle-notch')
+//const compTask = document.querySelectorAll('.fa-circle-notch')
 
 Array.from(delTask).forEach((element)=>{
     element.addEventListener('click', deleteTask)
@@ -18,6 +18,19 @@ Array.from(delTask).forEach((element)=>{
 
 circleArr.forEach((element)=>{
     element.addEventListener('click', taskStatus) 
+})
+
+statArr.forEach((element)=> {
+
+    if(element.innerText=='false'){
+        element.parentNode.firstElementChild.className='fa fa-circle-notch'
+        element.parentNode.getElementsByClassName('itm')[0].id='off'
+    }else {
+        if(element.innerText=='true') {
+            element.parentNode.firstElementChild.className='fa fa-check-circle'
+            element.parentNode.getElementsByClassName('itm')[0].id='on'
+        }
+    }
 })
 
 ////post////
@@ -30,13 +43,8 @@ circleArr.forEach((element)=>{
 
 ////put////
  async function taskStatus (){
-       //console.log(this.parentNode.childNodes)
        const taskId1 = this.parentNode.childNodes[3].innerText
-       const iStatus1 = (this.parentNode.childNodes[9].innerText=='true')?false:true
-
-       this.nextElementSibling.id=(iStatus1==true)?'on':'off'
-
-       console.log(iStatus1,this.nextElementSibling)       
+       const iStatus1 = (this.parentNode.childNodes[9].innerText=='true')?false:true         
         
         try{
             const response = await fetch('/taskStatus', {

@@ -1,16 +1,8 @@
-/* span {
+.stat {
     display: none;
-  } */
+  }
   
   #on {
     text-decoration: line-through;
     color: red;
   }
-/*   
-  label {
-    border: thin solid darkgray;
-    border-radius: 5px;
-    padding: 10px;
-    display: inline-block;
-    margin-top: 5px;
-  } */
