@@ -85,7 +85,7 @@
       minuteHand.style.transform= `rotate(${360/60*minutes+90}deg)`
       hourHand.style.transform= `rotate(${360/12*hours+90}deg)`
      
-      if(seconds==59||minutes>=59){
+      if(seconds==59||minutes==59){
         console.log('hi')
         document.querySelector('.second-hand').style.transition = `${0.0}s`
 
