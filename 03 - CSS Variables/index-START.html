@@ -11,7 +11,7 @@
   <div class="controls">
 
     <label for="spacing">Spacing:</label>
-    <input id="spacing" type="range" name="spacing" min="10" max="200" value="10" data-sizing="px">
+    <input id="spacing" type="range" name="spacing" min="10" max="200" value="10" data-sizing="px">  // anything that is preceded with data- becomes a custom data attribute
 
     <label for="blur">Blur:</label>
     <input id="blur" type="range" name="blur" min="0" max="25" value="10" data-sizing="px">
@@ -26,7 +26,7 @@
   <style>
 /* Default style settings set with css variables */
     :root {
-      --base: #bada55;
+      --base: #bada55;  // the -- needs to b ein front to set the variable
       --spacing: 10px;
       --blur: 10px;
     }
@@ -73,7 +73,7 @@ console.log(inputs)
 
 // function for changing each css variable
 function handleUpdate(){
-const suffix=this.dataset.sizing || ''
+const suffix=this.dataset.sizing || ''   // the this is the element that became active. the dataset is all the data attributes on the active element and sizing is the specific attribute
 document.documentElement.style.setProperty(`--${this.name}`, this.value + suffix)
 console.log(this.name, this.value,suffix)
 }
