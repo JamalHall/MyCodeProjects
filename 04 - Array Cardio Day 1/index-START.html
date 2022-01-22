@@ -35,131 +35,130 @@
       'Billings, Josh', 'Birrell, Augustine', 'Blair, Tony', 'Beecher, Henry', 'Biondo, Frank'
     ];
     
-// // Array.prototype.filter()
-// // 1. Filter the list of inventors for those who were born in the 1500's
+// Array.prototype.filter()
+// 1. Filter the list of inventors for those who were born in the 1500's
 
 
-// //modeled from finished solution arrow notation
-//     const  array1500s = inventors.filter(inventors => (inventors.year > 1499 && inventors.year < 1600 ))
-// console.table(array1500s)
+//modeled from finished solution arrow notation
+    const  array1500s = inventors.filter(inventors => (inventors.year > 1499 && inventors.year < 1600 ))
+console.table(array1500s)
 
 
-// //modeled from video example no arrow notation
+//modeled from video example no arrow notation
 
-//     const arrayFifteen = inventors.filter(function(keyValue) {
-//       if(keyValue.year < 1600 && keyValue.year > 1499) {
-//         return true
-//       }
-//     })
-//     console.table(arrayFifteen)
+    const arrayFifteen = inventors.filter(function(keyValue) {
+      if(keyValue.year < 1600 && keyValue.year > 1499) {
+        return true
+      }
+    })
+    console.table(arrayFifteen)
     
 
 
-// // Array.prototype.map()
-// // 2. Give us an array of the inventors first and last names
+// Array.prototype.map()
+// 2. Give us an array of the inventors first and last names
 
-//     // ver 1
-//     let inventorFullName1 = inventors.map( (fNames) => `${fNames.first}  ${fNames.last}`
-//     )      
-//     console.table(inventorFullName1)
+    // ver 1
+    let inventorFullName1 = inventors.map( (fNames) => `${fNames.first}  ${fNames.last}`
+    )      
+    console.table(inventorFullName1)
 
-//    // ver 2 
-//     let inventorFullName2 = inventors.map( (fNames) => {`${fNames.last} ${fNames.year} ${fNames.first}`
-//     let monster = `${fNames.first} ${fNames.last} ${fNames.year}` 
-//     return monster })
+   // ver 2 
+    let inventorFullName2 = inventors.map( (fNames) => {`${fNames.last} ${fNames.year} ${fNames.first}`
+    let monster = `${fNames.first} ${fNames.last} ${fNames.year}` 
+    return monster })
       
-//     console.table(inventorFullName2)
+    console.table(inventorFullName2)
 
 
-//     //ver 3
-//     let inventorFullName3 = inventors.map((fNames) => {
-//   return `${fNames.first}  ${fNames.last}`;
-// });
-// console.table(inventorFullName3);
+    //ver 3
+    let inventorFullName3 = inventors.map((fNames) => {
+  return `${fNames.first}  ${fNames.last}`;
+});
+console.table(inventorFullName3);
 
-//     // Array.prototype.sort()
-//     // 3. Sort the inventors by birth date, oldest to youngest
+    // Array.prototype.sort()
+    // 3. Sort the inventors by birth date, oldest to youngest
     
-// const ordered = inventors.sort(function(a, b) {
-//       if(a.year > b.year) { //a is person 1 b is person 2 can use any parameter name but only 2 parameters
-//         return 1;//sort returns 1 or -1 to determine order
-//       } else {
-//         return -1;
-//       }
-//     });
-//     console.table(ordered)
+const ordered = inventors.sort(function(a, b) {
+      if(a.year > b.year) { //a is person 1 b is person 2 can use any parameter name but only 2 parameters
+        return 1;//sort returns 1 or -1 to determine order
+      } else {
+        return -1;
+      }
+    });
+    console.table(ordered)
 
-// // with Ternary Operator
-// const sortedList = inventors.sort((aAge,bAge) => aAge.year > bAge.year ? 1:-1)
-// console.table(sortedList)
-
-
-
-
-//     // Array.prototype.reduce()
-// //    4. How many years did all the inventors live all together?
-
-
-// //JS 30 example solution total 861
-
-// const totalYears = inventors.reduce((acc,cv) => {return acc + (cv.passed - cv.year)},0)
-// console.log(totalYears)
-
-
-// //ver 1
-// const totalYears3 = inventors.reduce(myFunction2, 0);
-// function myFunction2(acc, cv, index) {
-//   const numOfYears = inventors[index].passed - inventors[index].year;
-//   console.log(acc)
-//  //console.log(inventors[index].passed - inventors[index].year) 
-//    return numOfYears + acc;
-// }
-// console.log(totalYears3)
-
-// //ver 2
-// const sum = inventors.reduce((acc,cv) => {
-//    acc+(cv.passed - cv.year);
-//    console.log(acc); 
-//   return acc+(cv.passed - cv.year); 
-//   } ,0)
-// console.log(sum)
-
-// //ver 3
-// function sumTotalYears() {
-//   let sum = 0
-//   for (let i = 0; i < inventors.length; i++) {
-//     const numOfYears = inventors[i].passed - inventors[i].year;
-//     sum += numOfYears;
-//   }
-//   return console.log(sum)
-// }
-//  sumTotalYears();
-
-
-//     // 5. Sort the inventors by years lived
-
-//     const oldest = inventors.sort(function(a, b) {
-//       const lastInventor = a.passed - a.year;
-//       const nextInventor = b.passed - b.year;
-//       return lastInventor > nextInventor ? -1 : 1;
-//     });
-//     console.table(oldest);
+// with Ternary Operator
+const sortedList = inventors.sort((aAge,bAge) => aAge.year > bAge.year ? 1:-1)
+console.table(sortedList)
 
 
 
-    // // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
-    // // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
-    // const wikiElement = document.querySelector('#mw-pages > div > div')
-    // const links = Array.from(wikiElement.querySelectorAll('a')) // the a looks for all anchor tags
-    // const de = links
-    // .map(linksElement => linksElement.textContent)
-    // .filter(hasDe=> hasDe.includes('de'))
 
-    // //my way I used foreach to make node list into an array and added a space after de to filter des and deu
-    // const wikiStreetElements1 = document.querySelectorAll('.mw-category a')// the a looks for all anchor tags with the mw-category class
-    // let arr = []
-    // wikiStreetElements1.forEach(e=>arr.push(e.innerText))
-    // arr.filter(e=>e.includes(' de '))
+    // Array.prototype.reduce()
+//    4. How many years did all the inventors live all together?
+
+
+//JS 30 example solution total 861
+
+const totalYears = inventors.reduce((acc,cv) => {return acc + (cv.passed - cv.year)},0)
+console.log(totalYears)
+
+
+//ver 1
+const totalYears3 = inventors.reduce(myFunction2, 0);
+function myFunction2(acc, cv, index) {
+  const numOfYears = inventors[index].passed - inventors[index].year;
+  console.log(acc)
+ //console.log(inventors[index].passed - inventors[index].year) 
+   return numOfYears + acc;
+}
+console.log(totalYears3)
+
+//ver 2
+const sum = inventors.reduce((acc,cv) => {
+   acc+(cv.passed - cv.year);
+   console.log(acc); 
+  return acc+(cv.passed - cv.year); 
+  } ,0)
+console.log(sum)
+
+//ver 3
+function sumTotalYears() {
+  let sum = 0
+  for (let i = 0; i < inventors.length; i++) {
+    const numOfYears = inventors[i].passed - inventors[i].year;
+    sum += numOfYears;
+  }
+  return console.log(sum)
+}
+ sumTotalYears();
+
+
+    // 5. Sort the inventors by years lived
+
+    const oldest = inventors.sort(function(a, b) {
+      const lastInventor = a.passed - a.year;
+      const nextInventor = b.passed - b.year;
+      return lastInventor > nextInventor ? -1 : 1;
+    });
+    console.table(oldest);
+
+
+    // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
+    // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
+    const wikiElement = document.querySelector('#mw-pages > div > div')
+    const links = Array.from(wikiElement.querySelectorAll('a')) // the a looks for all anchor tags
+    const de = links
+    .map(linksElement => linksElement.textContent)
+    .filter(hasDe=> hasDe.includes('de'))
+
+    //my way I used foreach to make node list into an array and added a space after de to filter des and deu
+    const wikiStreetElements1 = document.querySelectorAll('.mw-category a')// the a looks for all anchor tags with the mw-category class
+    let arr = []
+    wikiStreetElements1.forEach(e=>arr.push(e.innerText))
+    console.log(arr.filter(e=>e.includes(' de ')))
 
 
     // 7. sort Exercise
@@ -195,8 +194,6 @@ console.log(hash,tot)
     }, {}); // the [] is the empty object reduce is starting with other than that it works like my hash function
 
     console.log(transportation);
-
-
 
   </script>
 </body>
