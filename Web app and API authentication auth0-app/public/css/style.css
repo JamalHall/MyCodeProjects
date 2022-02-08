@@ -3,3 +3,31 @@ body {
     text-decoration: underline dashed  dodgerblue;
     color: rgba(126, 20, 212, 0.822);
 }
+
+.profileInfo {
+    width: 200px;
+    margin: 1 auto;
+    padding: 0.5em;
+    border: 1px solid #7777;
+    border-radius: 5px;
+    box-shadow: 5px 5px 5px 5px #1228;
+}
+
+.profileInfo img {
+    width: 100%;
+}
+
+.name{
+    font-size: 1em;
+    margin: 0;
+    text-align: center;
+}
+
+ul {
+    display: flex;    
+}
+
+li {
+    flex-direction: row; 
+    margin: 20px;   
+}

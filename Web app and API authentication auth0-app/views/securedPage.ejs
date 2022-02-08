@@ -8,8 +8,8 @@
     <link rel="stylesheet" href="css/style.css">      
 </head>
 <body>
-    
-<%- include('partials/nav') %>
+
+    <%- include('partials/nav') %>
 
     <h1>Hi this is the H1 element and <%= title %></h1>
     <p>This is the p element & <%= title %> page</p>
@@ -19,6 +19,12 @@
          <p>The user is logged out </p>
           <% } %>
 
+    <% if(user){ %> 
+    <div class="profileInfo">
+        <img src="<%= user.picture %>" alt="">
+        <p class="name"> Name is: <%= user.name %>  </p>
+    </div>  
+    <% } %>
     
 
 </body>
