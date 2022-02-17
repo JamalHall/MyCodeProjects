@@ -78,9 +78,9 @@ const calculate = () => {
   rangeSorted = tempArr.sort((a,b)=> a-b)
   minMaxRange = {min:tempArr[0], max:tempArr[38]}
 
-  //x = Object.values(range).sort((a,b)=>b-a)
+  x = Object.values(range).sort((a,b)=>b-a)
   for(e in range){ y.push(e,range[e])}
-  //console.log(y[y.indexOf('11')+1])
+  console.log(y[y.indexOf('11')+1])
 
 
 
