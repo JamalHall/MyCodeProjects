@@ -16,7 +16,6 @@ let minMaxRange
 let x
 let y =[] // dynamic for searching by number or range
 
-
 const previewFile = () => {
 
     const content = document.querySelector('.content');
@@ -81,6 +80,9 @@ const calculate = () => {
   x = Object.values(range).sort((a,b)=>b-a)
   for(e in range){ y.push(e,range[e])}
   console.log(y[y.indexOf('11')+1])
+
+  
+
 
 
 
