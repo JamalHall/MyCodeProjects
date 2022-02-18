@@ -14,8 +14,14 @@ let weights = {}
 let minMaxWeight 
 let numArrDyno =[] // dynamic for searching by number or weights
 let objForSelector={}
+let sortedArrSelect=[]
 
-const previewFile = () => {
+
+document.querySelector('button').addEventListener('click',calculate)
+
+
+
+function previewFile () {
 
     const content = document.querySelector('.content');
     const [file] = document.querySelector('input[type=file]').files;
@@ -32,7 +38,7 @@ const previewFile = () => {
   for(e of seperated) { objArr.push( {date: new Date(e[0]), seperated:e[1].split(' ')} ) } 
  
   // this will then display a text file in the DOM //
-   content.innerText = reader.result;
+   //content.innerText = reader.result;
   calculate()
     
 });
@@ -42,7 +48,7 @@ reader.readAsText(file)
 
 
 //creating a frequency table
-const calculate = () => {
+function calculate() {
   
   let arr = []
     for(i of winArr){
@@ -71,60 +77,53 @@ const calculate = () => {
   let rangeS=9999
   for(e in weights){
     numArrDyno.push(e,weights[e], Math.round(rangeS+1), Math.round(weights[e]+rangeS))
+    sortedArrSelect.push(Math.round(rangeS+1), Math.round(weights[e]+rangeS))
     rangeS=weights[e]+rangeS
    }
 //selector table as obj for readability
   numArrDyno.forEach((e,i) => { objForSelector[i+1] = e })
   
-  console.log('percent all', percentAll)
-  console.log('weight for each', weights )
-  console.log('Dynamic Array of values',numArrDyno)
+  //console.log('percent all', percentAll)
+  //console.log('weight for each', weights )
+  //console.log('Dynamic Array of values',numArrDyno)
   console.log('selector builder', objForSelector)
+  //console.log('Selector Weights Sorted', sortedArrSelect)
 
   randomAndSearch(numArrDyno)
 
 }// end calculate
 
 
-
-
 function randomAndSearch(numAD){
 const min = numAD[2]
 const max = numAD[155]
+let smartPick = []
+
+for(let i=0;i<5;i++){
 const ranPick = Math.floor(Math.random()*(max-min+1)+min)
 
 console.log('min & max & random number',min,max,ranPick)
 if(ranPick>=min && ranPick<=max) {console.log(true)} else console.log(false)
+
+let diffCurrent=10000
+let nearest
+let selectedNum
+
+for(e of sortedArrSelect){
+  let diff=Math.abs(e-ranPick)
+   if(diff<diffCurrent){diffCurrent=diff; nearest=e} 
+   
+   if(numAD[numAD.indexOf(nearest)-3]<=39){
+     selectedNum=numAD[numAD.indexOf(nearest)-3]
+   }else{
+     selectedNum=numAD[numAD.indexOf(nearest)-2]
 }
-
-
-
-
-
-class  DynoBuilder {
-  constructor(number,weight){
-    this.number = number
-    this.range = 9999+weight
-  }
 }
-
-
-
-
-function key (x) {
-
-  switch (999+weights[11]) {
-  case 'a':
-    console.log('1');
-    break;
-    case 'b':
-      console.log('2');
-      break;
-  default: console.log('3')
-    break;
+console.log(diffCurrent,nearest,selectedNum)
+smartPick.push(selectedNum)
 }
-
-
+ // this will then display a text file in the DOM //
+ document.querySelector('.content').innerText = smartPick.sort((a,b)=>a-b)
 
 }
 
@@ -136,20 +135,3 @@ function key (x) {
 
 
 
-
-
-
-
-
-// const arr12=[]
-// const promise1 = new Promise((resolve, reject) => {
-//   for(i=0;i<=10;i++){ arr12.push(i) }
-//   resolve('Success!');
-// });
-
-// promise1.then((value) => {
-  
-//   console.log(value);
-//   console.log(arr12.reduce((a,b)=>a+b))
-//   // expected output: "Success!"
-// });
