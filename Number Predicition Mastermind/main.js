@@ -17,7 +17,7 @@ let objForSelector={}
 let sortedArrSelect=[]
 
 
-document.querySelector('button').addEventListener('click',calculate)
+document.querySelector('button').addEventListener('click',randomAndSearch)
 
 
 
@@ -86,7 +86,7 @@ function calculate() {
   //console.log('percent all', percentAll)
   //console.log('weight for each', weights )
   //console.log('Dynamic Array of values',numArrDyno)
-  console.log('selector builder', objForSelector)
+  //console.log('selector builder', objForSelector)
   //console.log('Selector Weights Sorted', sortedArrSelect)
 
   randomAndSearch(numArrDyno)
@@ -94,12 +94,13 @@ function calculate() {
 }// end calculate
 
 
-function randomAndSearch(numAD){
-const min = numAD[2]
-const max = numAD[155]
+function randomAndSearch(){
+if(numArrDyno.length==0) return ;
+const min = numArrDyno[2]
+const max = numArrDyno[155]
 let smartPick = []
 
-for(let i=0;i<5;i++){
+for(let i=0;i<5;){
 const ranPick = Math.floor(Math.random()*(max-min+1)+min)
 
 console.log('min & max & random number',min,max,ranPick)
@@ -113,17 +114,26 @@ for(e of sortedArrSelect){
   let diff=Math.abs(e-ranPick)
    if(diff<diffCurrent){diffCurrent=diff; nearest=e} 
    
-   if(numAD[numAD.indexOf(nearest)-3]<=39){
-     selectedNum=numAD[numAD.indexOf(nearest)-3]
+   if(numArrDyno[numArrDyno.indexOf(nearest)-3]<=39){
+     selectedNum=numArrDyno[numArrDyno.indexOf(nearest)-3]
    }else{
-     selectedNum=numAD[numAD.indexOf(nearest)-2]
+     selectedNum=numArrDyno[numArrDyno.indexOf(nearest)-2]
 }
 }
 console.log(diffCurrent,nearest,selectedNum)
-smartPick.push(selectedNum)
+
+if(smartPick.includes(selectedNum)) {
+  smartPick.pop(selectedNum)
+  i--
+} else { 
+  smartPick.push(selectedNum)
+  i++
+}
+
 }
  // this will then display a text file in the DOM //
  document.querySelector('.content').innerText = smartPick.sort((a,b)=>a-b)
+ console.log(smartPick.length)
 
 }
 
