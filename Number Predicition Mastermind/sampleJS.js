@@ -2,7 +2,7 @@ let arr1=[1,2,3]
 let arr2=[4,5,6]
 let merge=[]
 
-//document.querySelector('input').addEventListener('change',previewFile)
+document.querySelector('input').addEventListener('change',previewFile)
 
 function previewFile() {
     const content = document.querySelector('.content');
