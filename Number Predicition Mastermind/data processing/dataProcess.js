@@ -11,6 +11,7 @@ const content = document.querySelector('.content');
 document.querySelector('input').addEventListener('change',previewFile)
 document.querySelector('button').addEventListener('click',randomAndSearch)
 
+
 function previewFile() {    
     const [file] = document.querySelector('input[type=file]').files;
     const reader = new FileReader();   
@@ -20,6 +21,7 @@ function previewFile() {
     })
    reader.readAsText(file);                
   }
+
 
 function parseFile(data){
  
@@ -35,6 +37,7 @@ function parseFile(data){
    calculate()
 }
 
+
 function calculate(){
     
     let hash = {}
@@ -47,11 +50,6 @@ let weights = {}
 
   for(e in hash){ percentAll[e]= hash[e]/allNumbers.length }  
   for(e in percentAll){ weights[e] = (percentAll[e]*10000)+2 }
-
-  let tempArr = []
-  for(e in weights){ tempArr.push(weights[e])}
-
-minMaxWeight = { min:tempArr[0], max:tempArr[38] }
 
 //creating selector tables
 let rangeS=9999
