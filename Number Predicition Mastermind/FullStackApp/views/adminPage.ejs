@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>This is a Full Stack TODO list using the MVC Model & Auth0 Authentication</title>
+    <link rel="stylesheet" href="css/style.css">      
+</head>
+<body>
+<h1>Auth0 Authentication Demo page Individual User</h1>
+    <%- include('partials/nav') %>
+
+     
+     <%if(user) { %> 
+        <p>Hello <%= user.given_name || user.name %> </p> 
+        <%} else {%>
+         <p>The user is logged out </p>
+          <% } %>
+
+    <% if(user){ %> 
+    <div class="profileInfo">
+        <img src="<%= user.picture %>" alt="">
+        <p class="name"> User Name is: <%= user.name %>  </p>
+    </div>  
+    <% } %>
+    
+    <form action="/todos/createTodo" method="POST">
+        <input type="text" placeholder=" Task" name="todoFormItem">
+        <input type="date" placeholder="Finish By" name="formDate">
+        <input type="submit" >
+    </form>
+   
+   
+</body>
+</html>

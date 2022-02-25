@@ -1,10 +1,11 @@
 let date
-let winningNums
-let prize 
-let allNumbers
+let winningNums //from parseFile
+let prize //from parseFile
+let allNumbers //from parseFile
 let numArrDyno =[] // dynamic for searching by number or weights
 let objForSelector={} //selector table as obj for readability
 let dynamicStatRange=[]
+let viewParse
 
 
 const content = document.querySelector('.content');
@@ -29,7 +30,7 @@ function parseFile(data){
   let arr1=data.split(/\r\n|\n/).filter(e=>e!='')
   let arr2=arr1.map(e => e=e.replace('$',',$') )
   let arr3=arr2.map(e=>e.split(','))
-
+  viewParse=arr3 
   date=arr3.map(e =>new Date(e[0].split(' ')).toDateString())
   winningNums=arr3.map(e =>e[1])
   allNumbers=winningNums.join(' ').split(' ').filter(e=>e!='')
