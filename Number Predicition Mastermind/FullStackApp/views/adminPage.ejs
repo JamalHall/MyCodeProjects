@@ -24,13 +24,27 @@
         <p class="name"> User Name is: <%= user.name %>  </p>
     </div>  
     <% } %>
-    
-    <form action="/todos/createTodo" method="POST">
+
+    <div><span id="pick"></span></div>
+    <button id="generate">Generate Test</button>
+
+
+    <p class="content"></p>
+
+
+
+  
+
+    <form action="/admin/uploadData" method="POST">
+        <div>
+            <span>  <input type="file"><br> </span>
+        </div>
+        
         <input type="text" placeholder=" Task" name="todoFormItem">
         <input type="date" placeholder="Finish By" name="formDate">
         <input type="submit" >
     </form>
    
-   
+   <script src="../public/js/admin.js"></script>
 </body>
 </html>

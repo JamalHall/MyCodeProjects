@@ -130,9 +130,9 @@ function randomAndSearch(){
 
         console.log('Min difference',diffCurrent,'Nearest Dynamic value',nearest,'Selected Number',+selectedNum)
     }
-    // this will then display a text file in the DOM //
-        document.querySelector('.content').innerText = ' [ ' + smartPick.sort((a,b)=>a-b)+' ] ' + content.innerText
-        console.log('Smart pick length',smartPick.length)    
+    // // this will then display a text file in the DOM //
+    //     document.querySelector('.content').innerText = ' [ ' + smartPick.sort((a,b)=>a-b)+' ] ' + content.innerText
+    //     console.log('Smart pick length',smartPick.length)    
     }
 
 

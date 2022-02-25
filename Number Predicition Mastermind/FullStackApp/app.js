@@ -35,7 +35,8 @@ const adminRoute = require('./routes/admin')
 //router routes
 app.use('/', homeRoute)
 app.use('/mastermind',requiresAuth(),mastermindRoute )
-app.use('/admin',requiresAuth(),adminRoute )
+//app.use('/admin',requiresAuth(),adminRoute )
+app.use('/admin',adminRoute )
 
 
 //Listen Method 
