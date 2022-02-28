@@ -1,16 +1,14 @@
 const mongoose = require('mongoose')
 
 const dbSchema = new mongoose.Schema({
-    year:{
+    uploadDate:{
         type: String,
-        required: false,
-
+        required: true,
     },
 
     data:{
         type: Object,
         required: true,
-
     },
    
 })

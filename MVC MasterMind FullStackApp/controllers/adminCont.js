@@ -2,17 +2,20 @@ const historyData = require('../models/DB-Model')
 const moment = require('moment')
 const date = new Date() //moment(todoItems.date).format("MMM Do YY")
 const mastermindProcess = require('../dataProcessing/dataProcess')
-
-
+const mProcess = mastermindProcess.mmFunctions
+const mmVariables = mastermindProcess.mmVariables
 
 module.exports = {
 
     getData: async (req,res)=>{
         try{ 
-            const arrayDocs = await historyData.find({})
-            const yearDocs = await historyData.find({})                             
-            console.log('get ran')                
-            res.render('adminPage.ejs',  {years: yearDocs, dataArr: arrayDocs, newDate: date, authStatus: req.oidc.isAuthenticated(), user: req.oidc.user,})
+            const dbResponse = await historyData.find({})
+            const masterMindResponse = await mProcess.calculate(dbResponse[0].data)
+            const masterMindSmart = await mProcess.randomAndSearch()                            
+            console.log('mm variables =>1',masterMindResponse)
+            console.log('DB res[0] data =>', dbResponse[0].data)
+            console.log('mm smart pick =>',masterMindSmart)                            
+            res.render('adminPage.ejs',  {authStatus: req.oidc.isAuthenticated(), user: req.oidc.user, mmVars: masterMindResponse , dbRes: dbResponse, smartPick: masterMindSmart})
         }catch(err){ console.error(err)}
     },
 
@@ -20,12 +23,10 @@ module.exports = {
         console.log(req.body)
         try{ 
             //const data = mastermindProcess.previewFile
-            await historyData.create(req.body)
-       
-
+            await historyData.create({uploadDate: date  ,data: req.body})
             console.log('created Main DB entries')
             console.log('works')
-            res.json('hi')
+            res.json('create data hi')
 
         }catch(err){ console.error(err)}
     },
@@ -51,6 +52,9 @@ module.exports = {
 
 
 }
+
+
+
 
 // createTodo: async (req,res)=>{
 //     console.log(req.body)

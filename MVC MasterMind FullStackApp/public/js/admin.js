@@ -23,10 +23,11 @@ function parseFile(data){
   let arr2=arr1.map(e => e=e.replace('$',',$') )
   let arr3=arr2.map(e=>e.split(','))
   viewParse[0]=arr3 
-  date=arr3.map(e =>new Date(e[0].split(' ')).toDateString())
-  winningNums=arr3.map(e =>e[1])
-  allNumbers=winningNums.join(' ').split(' ').filter(e=>e!='')
-  prize=arr3.map(e =>e[2])
+  
+  // date=arr3.map(e =>new Date(e[0].split(' ')).toDateString())
+  // winningNums=arr3.map(e =>e[1])
+  // allNumbers=winningNums.join(' ').split(' ').filter(e=>e!='')
+  // prize=arr3.map(e =>e[2])
   
 
 serverUpdate(arr3)
@@ -38,7 +39,7 @@ serverUpdate(arr3)
       const options = {
         headers: {'Content-Type': 'application/json'},
         method: "POST",
-        body: JSON.stringify({data})
+        body: JSON.stringify(data)
         }
       const response = await fetch("/admin/uploadData",options)
       const getBack = await response.json()
