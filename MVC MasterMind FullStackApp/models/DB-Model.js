@@ -7,8 +7,8 @@ const dbSchema = new mongoose.Schema({
 
     },
 
-    dataArray:{
-        type: Array,
+    data:{
+        type: Object,
         required: true,
 
     },

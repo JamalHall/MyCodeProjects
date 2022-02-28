@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RC5 NPM mastermind </title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <h1>Welcome to the Master Mind</h1>
+    <%- include('partials/nav') %>
+    <%if(user) { %> 
+        <p>Hello <%= user.given_name || user.name %> </p> 
+        <%} else {%>
+         <p>Login to access the Mind</p>
+          <% } %>
+
+    <span><a href="/mastermind">Activate the Mind</a></span>
+    <script src="/js/home.js"></script>
+</body>
+</html>

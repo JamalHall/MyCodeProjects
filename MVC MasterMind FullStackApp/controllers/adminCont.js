@@ -7,15 +7,6 @@ const mastermindProcess = require('../dataProcessing/dataProcess')
 
 module.exports = {
 
-    getNums: async (req,res)=>{
-        try{ 
-            const arrayDocs = await historyData.find({})           
-            const data=mastermindProcess.parseFile(arrayDocs)                
-            console.log('get ran')                
-            res.render('masterMindPage.ejs',  {smartPick: data, newDate: date, authStatus: req.oidc.isAuthenticated(), user: req.oidc.user,})
-        }catch(err){ console.error(err)}
-    },
-
     getData: async (req,res)=>{
         try{ 
             const arrayDocs = await historyData.find({})
@@ -28,11 +19,23 @@ module.exports = {
     createData: async (req,res)=>{
         console.log(req.body)
         try{ 
-            const data = mastermindProcess.previewFile()
-            await historyData.create({data: req.body.formFileRC5})
+            //const data = mastermindProcess.previewFile
+            await historyData.create(req.body)
        
 
-        console.log('created Main DB entries')
+            console.log('created Main DB entries')
+            console.log('works')
+            res.json('hi')
+
+        }catch(err){ console.error(err)}
+    },
+
+    getNums: async (req,res)=>{
+        try{ 
+            const arrayDocs = await historyData.find({})           
+            const data=mastermindProcess.parseFile(arrayDocs)                
+            console.log('get ran')                
+            res.render('masterMindPage.ejs',  {smartPick: data, newDate: date, authStatus: req.oidc.isAuthenticated(), user: req.oidc.user,})
         }catch(err){ console.error(err)}
     },
 
