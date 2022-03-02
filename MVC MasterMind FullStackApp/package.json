@@ -17,7 +17,8 @@
     "express-openid-connect": "^2.7.1",
     "moment": "^2.29.1",
     "mongodb": "^4.4.0",
-    "mongoose": "^6.2.3"
+    "mongoose": "^6.2.3",
+    "puppeteer": "^13.4.1"
   },
   "devDependencies": {
     "nodemon": "^2.0.15"

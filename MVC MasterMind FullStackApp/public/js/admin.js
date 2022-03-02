@@ -2,6 +2,7 @@ document.querySelector('input').addEventListener('change',previewFile)
 document.querySelector('#generate').addEventListener('click',smartPick)
 
 const content = document.querySelector('.content');
+const DBvars = document.querySelector('.test').innerText
    
 function previewFile() {    
     const [file] = document.querySelector('input[type=file]').files;

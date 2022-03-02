@@ -2,6 +2,8 @@ const historyData = require('../models/DB-Model')
 const moment = require('moment')
 const date = new Date() //moment(todoItems.date).format("MMM Do YY")
 const mastermindProcess = require('../dataProcessing/dataProcess')
+const e = require('express')
+const { db } = require('../models/DB-Model')
 const mProcess = mastermindProcess.mmFunctions
 const mmVariables = mastermindProcess.mmVariables
 
@@ -9,13 +11,18 @@ module.exports = {
 
     getData: async (req,res)=>{
         try{ 
-            const dbResponse = await historyData.find({})
-            const masterMindResponse = await mProcess.calculate(dbResponse[0].data)
+            const dbResponse = await historyData.find()
+
+            let arr=[]
+            for(let e of dbResponse){arr=[...e.data,...arr]}
+
+            const masterMindResponse = await mProcess.calculate(arr)
             const masterMindSmart = await mProcess.randomAndSearch()                            
             console.log('mm variables =>',masterMindResponse)
-            console.log('DB res[0] data =>', dbResponse[0].data)
+            console.log('DBres.data =>', dbResponse.data)
             console.log('mm smart pick =>',masterMindSmart)                            
-            res.render('adminPage.ejs',  {authStatus: req.oidc.isAuthenticated(), user: req.oidc.user, mmVars: masterMindResponse , dbRes: dbResponse, smartPick: masterMindSmart})
+            //res.json(arr)
+            res.render('adminPage.ejs',  {authStatus: req.oidc.isAuthenticated(), user: req.oidc.user, mmVars: masterMindResponse , dbRes: dbResponse[0], smartPick: masterMindSmart})
         }catch(err){ console.error(err)}
     },
 
