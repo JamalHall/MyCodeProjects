@@ -27,12 +27,12 @@
     <% } %>
 
     <div><span id="pick"></span></div>
-    <button id="generate">Generate Test</button>
+    <button id="generate">Smart Pick</button>
 
 
-    <p class="content"><%= smartPick %></p>
-
-
+    <p class="content"><%= `[ ${smartPick} ]`  %></p>
+    <div class='test' hidden > <%- JSON.stringify(mmVars) %> </div>
+    
 
   
 

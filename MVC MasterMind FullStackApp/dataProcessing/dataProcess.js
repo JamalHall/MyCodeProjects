@@ -19,7 +19,6 @@
         
     exports.mmFunctions = {
 
-
         calculate: (arr3 ) => {  //added arr3 argument
 
             // added below
@@ -90,7 +89,9 @@
             }
         
             //     document.querySelector('.content').innerText = ' [ ' + smartPick.sort((a,b)=>a-b)+' ] ' + content.innerText
-        return smartPick        
+            console.log(smartPick)
+        return smartPick.sort((a,b)=>a-b)  
+                  
             }
 
     }

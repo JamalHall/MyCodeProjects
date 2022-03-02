@@ -12,7 +12,7 @@ module.exports = {
             const dbResponse = await historyData.find({})
             const masterMindResponse = await mProcess.calculate(dbResponse[0].data)
             const masterMindSmart = await mProcess.randomAndSearch()                            
-            console.log('mm variables =>1',masterMindResponse)
+            console.log('mm variables =>',masterMindResponse)
             console.log('DB res[0] data =>', dbResponse[0].data)
             console.log('mm smart pick =>',masterMindSmart)                            
             res.render('adminPage.ejs',  {authStatus: req.oidc.isAuthenticated(), user: req.oidc.user, mmVars: masterMindResponse , dbRes: dbResponse, smartPick: masterMindSmart})
@@ -32,11 +32,9 @@ module.exports = {
     },
 
     getNums: async (req,res)=>{
-        try{ 
-            const arrayDocs = await historyData.find({})           
-            const data=mastermindProcess.parseFile(arrayDocs)                
-            console.log('get ran')                
-            res.render('masterMindPage.ejs',  {smartPick: data, newDate: date, authStatus: req.oidc.isAuthenticated(), user: req.oidc.user,})
+        try{                     
+            const masterMindSmart = await mProcess.randomAndSearch()                            
+            res.json(masterMindSmart)
         }catch(err){ console.error(err)}
     },
 

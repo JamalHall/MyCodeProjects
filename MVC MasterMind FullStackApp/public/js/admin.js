@@ -1,8 +1,8 @@
 document.querySelector('input').addEventListener('change',previewFile)
-//document.querySelector('button').addEventListener('click',randomAndSearch)
+document.querySelector('#generate').addEventListener('click',smartPick)
 
 const content = document.querySelector('.content');
-let viewParse = []
+   
 
 
 function previewFile() {    
@@ -22,7 +22,7 @@ function parseFile(data){
   let arr1=data.split(/\r\n|\n/).filter(e=>e!='')
   let arr2=arr1.map(e => e=e.replace('$',',$') )
   let arr3=arr2.map(e=>e.split(','))
-  viewParse[0]=arr3 
+  viewParse=arr3.map(e=>e) 
   
   // date=arr3.map(e =>new Date(e[0].split(' ')).toDateString())
   // winningNums=arr3.map(e =>e[1])
@@ -31,9 +31,7 @@ function parseFile(data){
   
 
 serverUpdate(arr3)
-}
-    
-    
+}    
   const serverUpdate = async (data) =>{
       console.log(data)
       const options = {
@@ -45,9 +43,23 @@ serverUpdate(arr3)
       const getBack = await response.json()
       console.log(getBack)
       //location.reload()
-
     }   
     
+
+   
+async function smartPick (){       
+        const options = {
+          headers: {'Content-Type': 'application/json'},
+          method: "GET"          
+          }
+        const response = await fetch("/admin/nums",options)
+        const getBack = await response.json()
+
+      document.querySelector('.content').innerText =  content.innerText + '\n [ ' + getBack+' ] ' 
+       console.log(getBack)
+        //location.reload()
+      }   
+
 
 
     // const serverUpdate = async (data) =>{
@@ -63,7 +75,8 @@ serverUpdate(arr3)
     
     // this will then display a text file in the DOM //
     
-    //document.querySelector('.content').innerText = ' [ ' + smartPick.sort((a,b)=>a-b)+' ] ' + content.innerText
+    
+
     //console.log('Smart pick length',smartPick.length) 
 
 
