@@ -3,8 +3,6 @@ document.querySelector('#generate').addEventListener('click',smartPick)
 
 const content = document.querySelector('.content');
    
-
-
 function previewFile() {    
     const [file] = document.querySelector('input[type=file]').files;
     const reader = new FileReader();   
@@ -23,12 +21,6 @@ function parseFile(data){
   let arr2=arr1.map(e => e=e.replace('$',',$') )
   let arr3=arr2.map(e=>e.split(','))
   viewParse=arr3.map(e=>e) 
-  
-  // date=arr3.map(e =>new Date(e[0].split(' ')).toDateString())
-  // winningNums=arr3.map(e =>e[1])
-  // allNumbers=winningNums.join(' ').split(' ').filter(e=>e!='')
-  // prize=arr3.map(e =>e[2])
-  
 
 serverUpdate(arr3)
 }    
@@ -42,10 +34,9 @@ serverUpdate(arr3)
       const response = await fetch("/admin/uploadData",options)
       const getBack = await response.json()
       console.log(getBack)
-      //location.reload()
+      location.reload()
     }   
     
-
    
 async function smartPick (){       
         const options = {
@@ -59,25 +50,3 @@ async function smartPick (){
        console.log(getBack)
         //location.reload()
       }   
-
-
-
-    // const serverUpdate = async (data) =>{
-    //   const response = await fetch( '/admin/uploadData', {
-    //     headers: {'Content-Type': 'application/json'},
-    //     method: "POST",
-    //     body: JSON.stringify(data)
-    //     })
-    //   const retData= await response.json()
-    //   console.log(retData)
-    //   location.reload()
-    // }   
-    
-    // this will then display a text file in the DOM //
-    
-    
-
-    //console.log('Smart pick length',smartPick.length) 
-
-
-    // {smartPick: data, newDate: date, authStatus: req.oidc.isAuthenticated(), user: req.oidc.user,})

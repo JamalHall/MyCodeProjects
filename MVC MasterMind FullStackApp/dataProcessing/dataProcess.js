@@ -1,21 +1,12 @@
-// let date
-// let winningNums //from parseFile
-// let prize //from parseFile
-// let allNumbers //from parseFile
-// let numArrDyno =[] // dynamic for searching by number or weights
-// let objForSelector={} //selector table as obj for readability
-// let dynamicStatRange=[]
-
-        mmVariables = {
-            date: new Date,
-            winningNums: [],   
-            prize: [],  
-            allNumbers: [],
-            numArrDyno: [],  
-            objForSelector: {},  
-            dynamicStatRange: [],
-        },
-
+mmVariables = {
+    date: new Date,
+    winningNums: [],   
+    prize: [],  
+    allNumbers: [],
+    numArrDyno: [],  
+    objForSelector: {},  
+    dynamicStatRange: [],
+},
         
     exports.mmFunctions = {
 
@@ -87,10 +78,9 @@
 
                 console.log('Min difference',diffCurrent,'Nearest Dynamic value',nearest,'Selected Number',+selectedNum)
             }
-        
-            //     document.querySelector('.content').innerText = ' [ ' + smartPick.sort((a,b)=>a-b)+' ] ' + content.innerText
-            console.log(smartPick)
-        return smartPick.sort((a,b)=>a-b)  
+     
+                console.log(smartPick)
+                return smartPick.sort((a,b)=>a-b)  
                   
             }
 
@@ -98,6 +88,4 @@
  
 
   
-    
-    // exports={date,winningNums,prize,allNumbers,numArrDyno,objForSelector,dynamicStatRange,calculate,randomAndSearch}
-
+ 
