@@ -1,13 +1,17 @@
 const content = document.querySelector('.content');
 const dbVars = document.querySelector('.hideVars').innerText
 const ordered =JSON.parse(dbVars)
-
+const dbVars2 = document.querySelector('.hideVars2').innerText
+const ordered2 =JSON.parse(dbVars2)
+let hash={}
+for(e of ordered2){hash[e.year]=e}
 
 document.querySelector('#submit').addEventListener('click',previewFile)
 document.querySelector('#generate').addEventListener('click',smartPick)
 
 
 console.log(ordered,"today's date",new Date().toLocaleDateString())
+console.log(hash,"today's date",new Date().toLocaleDateString())
    
 function previewFile() {    
     const [file] = document.querySelector('input[type=file]').files;
@@ -46,15 +50,15 @@ serverUpdate(arr3)
     
    
 async function smartPick (){
-        const sYear = document.querySelector('#sYear').value || 2011
-        const eYear = document.querySelector('#eYear').value || 2022
+        const sYear = +document.querySelector('#sYear').value || 2011
+        const eYear = +document.querySelector('#eYear').value || 2022
         const options = {
           headers: {'Content-Type': 'application/json'},
           method: "GET"          
           }
         const response = await fetch("/admin/nums",options)
         const getBack = await response.json()
-        console.log(getBack)
+        console.log(getBack,sYear,eYear)
         document.querySelector('.content').innerText =  content.innerText + '\n [ ' + getBack+' ] ' 
       
         //location.reload()

@@ -13,12 +13,13 @@ module.exports = {
         try{ 
             const dbResponse = await rc5DataDB.find()
             let arr=[]
+            const arr2=dbResponse
             for(let e of dbResponse){arr=[...e.data,...arr]}
             await mProcess.calculate(arr)
             const masterMindSmart = await mProcess.randomAndSearch()
-            //console.log(masterMindSmart)                          
+            console.log(arr2)                          
             //res.json(arr)
-            res.render('adminPage.ejs',  {authStatus: req.oidc.isAuthenticated(), user: req.oidc.user, mmVars:  JSON.stringify(masterMindSmart.mmVars) , smartPick: masterMindSmart.smartPick})
+            res.render('adminPage.ejs',  {authStatus: req.oidc.isAuthenticated(), user: req.oidc.user, mmVars:  JSON.stringify(masterMindSmart.mmVars) ,dbres: JSON.stringify(arr2), smartPick: masterMindSmart.smartPick})
         }catch(err){ console.error(err)}
     },
 

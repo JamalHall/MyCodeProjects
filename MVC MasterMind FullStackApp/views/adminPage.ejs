@@ -29,17 +29,17 @@
     <% } %>
 </div>  
 
-    <div>
-        <span><h5>Select Range of Years to include in the Mastermind</h5></span>
-  
-            <div>
-            <span><%- include('partials/slider') %></span>
-            <span><input id="sYear" for="minYear" type="number" placeholder="Beginning Year: 2011" minlength="4" maxlength="4" name="startYear"></span>
-            <span><input id="eYear" for="maxYear" type="number" placeholder="Ending Year: 2022" minlength="4" maxlength="4" name="endYear"></span>
-            
-            </div>      
- 
-    </div>
+<div>
+    <span><h5>Select Range of Years to include in the Mastermind</h5></span>
+    <form>
+        <div>
+        <span><%- include('partials/slider') %></span>
+        <span><input id="sYear" for="minYear" type="number" placeholder="Beginning Year: 2011" minlength="4" maxlength="4" name="startYear"></span>
+        <span><input id="eYear" for="maxYear" type="number" placeholder="Ending Year: 2022" minlength="4" maxlength="4" name="endYear"></span>
+        
+        </div>      
+    </form>
+</div>
 
     <div>
         <span><h5>MasterMind Generation</h5></span>
@@ -50,6 +50,7 @@
         <span>
             <p class="content"><%= `[ ${smartPick} ]`  %></p>
             <p class='hideVars' hidden > <%- mmVars %> </p>
+            <p class='hideVars2' hidden > <%- dbres %> </p>
         </span>
 
     </div>    
