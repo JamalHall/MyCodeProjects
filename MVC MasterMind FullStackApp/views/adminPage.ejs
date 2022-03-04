@@ -5,42 +5,68 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MasterMind Admin Page</title>
-    <link rel="stylesheet" href="/css/style.css">      
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/slider.css">       
 </head>
 <body>
     
+
 <h1>MasterMind Admin Page</h1>
-    <%- include('partials/nav') %>
+<header><%- include('partials/nav') %></header> 
 
-     
-     <%if(user) { %> 
+<div><span><h5>Admin Id</h5></span>    
+    <%if(user) { %> 
         <p>Hello <%= user.given_name || user.name %> </p> 
-        <%} else {%>
-         <p>The user is logged out </p>
-          <% } %>
-
-    <% if(user){ %> 
-    <div class="profileInfo">
-        <img src="<%= user.picture %>" alt="">
-        <p class="name"> User Name is: <%= user.name %>  </p>
-    </div>  
+    <%} else {%>
+        <p>The user is logged out </p>
     <% } %>
 
-    <div><span id="pick"></span></div>
-    <button id="generate">Smart Pick</button>
+    <% if(user){ %> 
+        <div class="profileInfo">
+            <img src="<%= user.picture %>" alt="">
+            <p class="name"> User: <%= user.name %>  </p>
+        </div>  
+    <% } %>
+</div>  
 
+    <div>
+        <span><h5>Select Range of Years to include in the Mastermind</h5></span>
+  
+            <div>
+            <span><%- include('partials/slider') %></span>
+            <span><input id="sYear" for="minYear" type="number" placeholder="Beginning Year: 2011" minlength="4" maxlength="4" name="startYear"></span>
+            <span><input id="eYear" for="maxYear" type="number" placeholder="Ending Year: 2022" minlength="4" maxlength="4" name="endYear"></span>
+            
+            </div>      
+ 
+    </div>
 
-    <p class="content"><%= `[ ${smartPick} ]`  %></p>
-    <div class='test' hidden > <%- JSON.stringify(mmVars) %> </div>
-    
+    <div>
+        <span><h5>MasterMind Generation</h5></span>
+        <span><button id="generate">Smart Pick</button></span>
+        <span><p id="pick"></p></span>
+        
 
-        <form>
-        <div>
-            <span>  <input type="file" placeholder="Select RC5 Data File" name="formFileRC5"><br> </span>
-        </div>
+        <span>
+            <p class="content"><%= `[ ${smartPick} ]`  %></p>
+            <p class='hideVars' hidden > <%- mmVars %> </p>
+        </span>
 
-    </form>
+    </div>    
    
+    <div>
+        <span><h5>Populate Database</h5></span>
+       <form action="">
+            <div>
+                <span>  <input id="dataDocument" type="file" placeholder="Select RC5 Data File" name="formFileRC5"><br> </span>
+                <span>  <input id="docYear" type="number" placeholder="year" minlength="4" maxlength="4" required="true" name="documentYear"></span>
+                <button id="submit">Submit</button>
+            </div>
+        </form>
+    </div>
+
+
    <script src="/js/admin.js"></script>
 </body>
 </html>
+

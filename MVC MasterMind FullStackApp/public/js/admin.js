@@ -1,8 +1,13 @@
-document.querySelector('input').addEventListener('change',previewFile)
+const content = document.querySelector('.content');
+const dbVars = document.querySelector('.hideVars').innerText
+const ordered =JSON.parse(dbVars)
+
+
+document.querySelector('#submit').addEventListener('click',previewFile)
 document.querySelector('#generate').addEventListener('click',smartPick)
 
-const content = document.querySelector('.content');
-const DBvars = document.querySelector('.test').innerText
+
+console.log(ordered,"today's date",new Date().toLocaleDateString())
    
 function previewFile() {    
     const [file] = document.querySelector('input[type=file]').files;
@@ -26,28 +31,32 @@ function parseFile(data){
 serverUpdate(arr3)
 }    
   const serverUpdate = async (data) =>{
+    const docYear = document.querySelector('#docYear').value
       console.log(data)
       const options = {
         headers: {'Content-Type': 'application/json'},
         method: "POST",
-        body: JSON.stringify(data)
+        body: JSON.stringify({data: data, year:docYear,   })
         }
       const response = await fetch("/admin/uploadData",options)
       const getBack = await response.json()
       console.log(getBack)
-      location.reload()
+      //location.reload()
     }   
     
    
-async function smartPick (){       
+async function smartPick (){
+        const sYear = document.querySelector('#sYear').value || 2011
+        const eYear = document.querySelector('#eYear').value || 2022
         const options = {
           headers: {'Content-Type': 'application/json'},
           method: "GET"          
           }
         const response = await fetch("/admin/nums",options)
         const getBack = await response.json()
-
-      document.querySelector('.content').innerText =  content.innerText + '\n [ ' + getBack+' ] ' 
-       console.log(getBack)
+        console.log(getBack)
+        document.querySelector('.content').innerText =  content.innerText + '\n [ ' + getBack+' ] ' 
+      
         //location.reload()
       }   
+

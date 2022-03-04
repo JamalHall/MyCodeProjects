@@ -22,10 +22,6 @@ body {
   padding-left: 22px;
 }
 
-#generate {  
-  margin-top: 30px;
-}
-
 nav>ul {
   font-family:Georgia, 'Times New Roman', Times, serif;
   display: flex;   

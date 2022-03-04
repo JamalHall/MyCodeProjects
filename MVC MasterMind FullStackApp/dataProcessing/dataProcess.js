@@ -9,6 +9,16 @@ mmVariables = {
 },
         
     exports.mmFunctions = {
+        parseData: (data) => {            
+            date={}
+            for(e of data){
+                date[e[0]]=[e[1],e[2]]
+            }          
+            return date
+        },
+
+
+
 
         calculate: (arr3 ) => {  //added arr3 argument
 
@@ -38,7 +48,7 @@ mmVariables = {
             }
             //selector table as obj for readability
             mmVariables.numArrDyno.forEach((e,i) => { mmVariables.objForSelector[i+1] = e })
-
+            
             return  mmVariables      
         },
 
@@ -51,7 +61,7 @@ mmVariables = {
             for(let i=0;i<5;){
                 const ranPick = Math.floor(Math.random()*(max-min+1)+min)
                 
-                console.log('Min & Max & Random Number',min,max,ranPick)
+                //console.log('Min & Max & Random Number',min,max,ranPick)
                 if(ranPick>=min && ranPick<=max) {console.log('Random Number in Dyno range',true)} else console.log('Random Number in Dyno range',false)
                 
                 let diffCurrent=10000
@@ -76,11 +86,12 @@ mmVariables = {
                     smartPick.pop(selectedNum)                  
                     }
 
-                console.log('Min difference',diffCurrent,'Nearest Dynamic value',nearest,'Selected Number',+selectedNum)
+                //console.log('Min difference',diffCurrent,'Nearest Dynamic value',nearest,'Selected Number',+selectedNum)
             }
      
-                console.log(smartPick)
-                return smartPick.sort((a,b)=>a-b)  
+                //console.log(smartPick)
+                //console.log(mmVariables)
+                return {smartPick:smartPick.sort((a,b)=>a-b),mmVars:mmVariables}  
                   
             }
 
