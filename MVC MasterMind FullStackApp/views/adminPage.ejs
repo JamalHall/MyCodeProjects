@@ -31,19 +31,18 @@
 
 <div>
     <span><h5>Select Range of Years to include in the Mastermind</h5></span>
-    <form>
-        <div>
-        <span><%- include('partials/slider') %></span>
-        <span><input id="sYear" for="minYear" type="number" placeholder="Beginning Year: 2011" minlength="4" maxlength="4" name="startYear"></span>
-        <span><input id="eYear" for="maxYear" type="number" placeholder="Ending Year: 2022" minlength="4" maxlength="4" name="endYear"></span>
-        
+    <form name="yearQuery" action="#">
+        <div>  
+        <span><%- include('partials/sliderMin') %></span>          
+        <span><input id="sYear" for="minYear" type="number" placeholder="Beginning Year: 2011" value="" minlength="4" maxlength="4" name="startYear"></span>
+        <span><%- include('partials/sliderMax') %></span>
+        <span><input id="eYear" for="maxYear" type="number" placeholder="Ending Year: 2022" value="" minlength="4" maxlength="4" name="endYear"></span>
+        <button class="submitYear" type="sumbit">Submit</button>
         </div>      
     </form>
-</div>
 
-    <div>
-        <span><h5>MasterMind Generation</h5></span>
-        <span><button id="generate">Smart Pick</button></span>
+        <span><h5>MasterMind Generation</h5><button id="generate" type="button">Smart Pick</button></span>
+        
         <span><p id="pick"></p></span>
         
 
@@ -57,11 +56,11 @@
    
     <div>
         <span><h5>Populate Database</h5></span>
-       <form action="">
+       <form name="populateDB" action="#">
             <div>
                 <span>  <input id="dataDocument" type="file" placeholder="Select RC5 Data File" name="formFileRC5"><br> </span>
                 <span>  <input id="docYear" type="number" placeholder="year" minlength="4" maxlength="4" required="true" name="documentYear"></span>
-                <button id="submit">Submit</button>
+                <button class="submitData" type="sumbit">Submit</button>
             </div>
         </form>
     </div>

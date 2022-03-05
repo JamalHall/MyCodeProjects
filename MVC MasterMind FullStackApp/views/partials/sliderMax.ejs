@@ -1,0 +1,40 @@
+  <div slider id="slider-distance">
+
+    <div>
+
+      <div inverse-left style="width:70%;"></div>
+      <div inverse-right style="width:70%;"></div>
+      <div range style="left:30%;right:40%;"></div>
+      <span thumb style="left:30%;"></span>
+      <span thumb style="left:60%;"></span>
+
+      
+      <div sign style="left:30%;">
+        <span id="value"></span>
+        
+      </div>
+
+     
+      <div sign style="left:60%;">
+        <span id="value"></span>        
+      </div>
+
+    </div>
+<form action="">
+  <label for="maxYear">Ending Year:</label>
+  <input id="maxYear" type="range" tabindex="2011" value="2022" max="2022" min="2011" step="1" oninput="
+  this.value=Math.max(this.value,this.parentNode.childNodes[3].value-(1));
+  let value=(100/(parseInt(this.max)-parseInt(this.min)))*parseInt(this.value)-(100/(parseInt(this.max)-parseInt(this.min)))*parseInt(this.min);
+  const parent = document.querySelector('#slider-distance')
+  let children = parent.childNodes[1].childNodes;
+  console.log('max',this.parentNode)
+  children[3].style.width=(100-value)+'%';
+  children[5].style.right=(100-value)+'%';
+  children[9].style.left=value+'%';
+  children[13].style.left=value+'%';
+  //children[13].childNodes[1].innerText=`Ending Year ${this.value}`;
+  document.querySelector('#eYear').value=this.value;"     
+    />   
+   </form> 
+ 
+  </div>

@@ -6,7 +6,7 @@ const ordered2 =JSON.parse(dbVars2)
 let hash={}
 for(e of ordered2){hash[e.year]=e}
 
-document.querySelector('#submit').addEventListener('click',previewFile)
+document.querySelector('.submitData').addEventListener('click',previewFile)
 document.querySelector('#generate').addEventListener('click',smartPick)
 
 
@@ -34,6 +34,8 @@ function parseFile(data){
 
 serverUpdate(arr3)
 }    
+
+
   const serverUpdate = async (data) =>{
     const docYear = document.querySelector('#docYear').value
       console.log(data)
@@ -49,9 +51,9 @@ serverUpdate(arr3)
     }   
     
    
-async function smartPick (){
-        const sYear = +document.querySelector('#sYear').value || 2011
-        const eYear = +document.querySelector('#eYear').value || 2022
+async function smartPick (){        
+        const sYear =+document.querySelector('#sYear').value
+        const eYear =+document.querySelector('#eYear').value
         const options = {
           headers: {'Content-Type': 'application/json'},
           method: "GET"          
@@ -64,3 +66,16 @@ async function smartPick (){
         //location.reload()
       }   
 
+
+// const form = document.forms.yearQuery;
+
+// function handleSubmit(event) {
+//   //  event.preventDefault();
+//    //const formData = new FormData(event.target);
+//   console.log('formData')
+// }
+// form.addEventListener('.submitYear', handleSubmit);
+ 
+ 
+
+ 

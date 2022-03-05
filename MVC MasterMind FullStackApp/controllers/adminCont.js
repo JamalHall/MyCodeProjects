@@ -5,21 +5,30 @@ const mastermindProcess = require('../dataProcessing/dataProcess')
 const e = require('express')
 const { db } = require('../models/DB-Model')
 const mProcess = mastermindProcess.mmFunctions
-const mVars = mastermindProcess.mmVariables
+
 
 module.exports = {
 
     getData: async (req,res)=>{
-        try{ 
-            const dbResponse = await rc5DataDB.find()
+        try{
+            let dbResponse
+            if(!req.query.startYear||!req.query.endYear){
+                 dbResponse = await rc5DataDB.find()
+            } else{
+                 dbResponse = await rc5DataDB.find({year:{$gte: req.query.startYear}, year: {$lte: req.query.endYear}})
+            }            
             let arr=[]
-            const arr2=dbResponse
+
+            const dbReply=dbResponse.map(e=>e = e.date) 
             for(let e of dbResponse){arr=[...e.data,...arr]}
             await mProcess.calculate(arr)
             const masterMindSmart = await mProcess.randomAndSearch()
-            console.log(arr2)                          
+            //console.log(req)
+            console.log(req.query)
+            console.log('dbresponse',dbReply)
+           // console.log(masterMindSmart)                                        
             //res.json(arr)
-            res.render('adminPage.ejs',  {authStatus: req.oidc.isAuthenticated(), user: req.oidc.user, mmVars:  JSON.stringify(masterMindSmart.mmVars) ,dbres: JSON.stringify(arr2), smartPick: masterMindSmart.smartPick})
+            res.render('adminPage.ejs',  {authStatus: req.oidc.isAuthenticated(), user: req.oidc.user, mmVars:  JSON.stringify(masterMindSmart) ,dbres: JSON.stringify(dbReply), smartPick: masterMindSmart.smartPick})
         }catch(err){ console.error(err)}
     },
 
@@ -27,7 +36,7 @@ module.exports = {
         console.log(req.body.year)
         try{ 
             const dataDates = await mProcess.parseData(req.body.data)
-            await rc5DataDB.create({uploadDate: date, year: req.body.year, date: dataDates, data: req.body.data})
+            await rc5DataDB.create({uploadDate: date, year: +req.body.year, date: dataDates, data: req.body.data})
             console.log('created Main DB entries')
             console.log('works')
             res.json('create data hi')
