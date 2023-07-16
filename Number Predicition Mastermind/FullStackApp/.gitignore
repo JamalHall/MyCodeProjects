@@ -1,7 +1,0 @@
-node_modules
-*.ini
-.env
-.xlsx
-.url
-.csv
-RC5_data
